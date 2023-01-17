@@ -8,10 +8,12 @@ let timeBlock = document.getElementsByClassName('time-block')
 let past = document.getElementsByClassName('past');
 let present = document.getElementsByClassName('present');
 let future = document.getElementsByClassName('future');
+let hour = document.getElementsByClassName('hour');
+let description = document.getElementsByClassName('description');
 
-$('#currentDay').text(currentDate.format('	MMMM D, YYYY'));
+$('#currentDay').text(currentDate.format('MMMM D, YYYY'));
 
-let hour = timeArray [
+let time = timeArray [
   dayjs('9').format('hA'),
   dayjs('10').format('hA'),
   dayjs('11').format('hA'),
@@ -23,7 +25,6 @@ let hour = timeArray [
   dayjs('5').format('hA')
 ];
 
-let time = dayjs($(timeBlock).text().trim(), 'hA').hour();
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
