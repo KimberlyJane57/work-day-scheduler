@@ -1,17 +1,17 @@
 let currentDate = dayjs();
 let currentTime = dayjs().hour();
 
-// let time = timeArray [
-//   dayjs('9').format('hA'),
-//   dayjs('10').format('hA'),
-//   dayjs('11').format('hA'),
-//   dayjs('12').format('hA'),
-//   dayjs('1').format('hA'),
-//   dayjs('2').format('hA'),
-//   dayjs('3').format('hA'),
-//   dayjs('4').format('hA'),
-//   dayjs('5').format('hA')
-// ];
+let timeArray = [
+  dayjs().hour('9').format('H'),
+  dayjs().hour('10').format('H'),
+  dayjs().hour('11').format('H'),
+  dayjs().hour('12').format('H'),
+  dayjs().hour('13').format('H'),
+  dayjs().hour('14').format('H'),
+  dayjs().hour('15').format('H'),
+  dayjs().hour('16').format('H'),
+  dayjs().hour('17').format('H')
+];
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -19,13 +19,16 @@ let currentTime = dayjs().hour();
 $(function () {
   $('#currentDay').text(currentDate.format('MMMM D, YYYY'));  
 
+
   populateLocalStorage()
+  setTimeBlock()
 
   // TODO: Add a listener for click events on the save button. This code should
   $('.saveBtn').click(function(){
     localStorage.setItem($(this).parent().attr('id'), $(this).parent().children('textarea').val())
 
   })
+
 
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -34,6 +37,7 @@ $(function () {
   // useful when saving the description in local storage?
   //
   // TODO: Add code to apply the past, present, or future class to each time
+
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
@@ -108,4 +112,25 @@ function populateLocalStorage(){
     hour5=''
 }
   $('#hour-5').children('textarea').val(hour5)
+}
+
+function setTimeBlock(){
+  for (let i = 0; i < timeArray.length; i++) {
+    let tense
+    if(dayjs().format('H')==timeArray[i]) tense='present'
+    if(dayjs().format('H')<timeArray[i]) tense='future'
+    if(dayjs().format('H')>timeArray[i]) tense='past'
+    console.log(timeArray[0])
+    console.log(tense)
+    console.log(dayjs().format('H')<timeArray[i])
+    if(i==0) $('#hour-9').addClass(tense)
+    if(i==1) $('#hour-10').addClass(tense)
+    if(i==2) $('#hour-11').addClass(tense)
+    if(i==3) $('#hour-12').addClass(tense)
+    if(i==4) $('#hour-1').addClass(tense)
+    if(i==5) $('#hour-2').addClass(tense)
+    if(i==6) $('#hour-3').addClass(tense)
+    if(i==7) $('#hour-4').addClass(tense)
+    if(i==8) $('#hour-5').addClass(tense)    
+  }
 }
