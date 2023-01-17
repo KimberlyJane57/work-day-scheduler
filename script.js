@@ -1,6 +1,29 @@
+const saveBtn = document.getElementsByClassName('saveBtn');
 let currentDate = dayjs();
+let currentTime = dayjs().hour();
+const hour9 = document.getElementById('hour-9');
+const hour10 = document.getElementById('hour-10');
+const hour11 = document.getElementById('hour-11');
+let timeBlock = document.getElementsByClassName('time-block')
+let past = document.getElementsByClassName('past');
+let present = document.getElementsByClassName('present');
+let future = document.getElementsByClassName('future');
+
 $('#currentDay').text(currentDate.format('	MMMM D, YYYY'));
 
+let hour = timeArray [
+  dayjs('9').format('hA'),
+  dayjs('10').format('hA'),
+  dayjs('11').format('hA'),
+  dayjs('12').format('hA'),
+  dayjs('1').format('hA'),
+  dayjs('2').format('hA'),
+  dayjs('3').format('hA'),
+  dayjs('4').format('hA'),
+  dayjs('5').format('hA')
+];
+
+let time = dayjs($(timeBlock).text().trim(), 'hA').hour();
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
